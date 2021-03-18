@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "repository": "dword-design/nuxt-content-git-hooks",
+  "funding": "https://www.buymeacoffee.com/dword",
+  "license": "MIT",
+  "author": "Sebastian Landwehr <info@dword-design.de>",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "check-unknown-files": "base check-unknown-files",
+    "commit": "base commit",
+    "dev": "base dev",
+    "lint": "base lint",
+    "prepare": "base prepare",
+    "prepublishOnly": "base prepublishOnly",
+    "test": "base test"
+  },
+  "devDependencies": {
+    "@dword-design/base": "^7.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
