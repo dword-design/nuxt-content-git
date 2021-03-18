@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dword-design/nuxt-content-hooks-git/compare/v1.0.0...v1.0.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* fix createdAt calculation ([cd97d61](https://github.com/dword-design/nuxt-content-hooks-git/commit/cd97d618f238a2309458378cf15da5c6fc5e554e))
+
 # 1.0.0 (2021-03-18)
 
 
