@@ -1,9 +1,9 @@
-import { endent } from '@dword-design/functions'
+import { endent, last, property } from '@dword-design/functions'
 import tester from '@dword-design/tester'
 import testerPluginPuppeteer from '@dword-design/tester-plugin-puppeteer'
 import packageName from 'depcheck-package-name'
 import execa from 'execa'
-import { stat } from 'fs-extra'
+import { outputFile, stat } from 'fs-extra'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 import P from 'path'
@@ -146,9 +146,12 @@ export default tester(
         })
         await execa.command('git add .')
         await execa.command('git commit -m init')
+        await outputFile(P.join('content', 'home.md'), 'foo')
+        await execa.command('git add .')
+        await execa.command('git commit -m update')
         const git = simpleGit()
         const log = await git.log({ file: P.join('content', 'home.md') })
-        const createdAt = new Date(log.all[0].date)
+        const createdAt = new Date(log.all |> last |> property('date'))
         const updatedAt = new Date(log.latest.date)
         const nuxt = new Nuxt({
           createRequire: 'native',
