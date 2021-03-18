@@ -1,12 +1,12 @@
 <!-- TITLE/ -->
-# undefined
+# nuxt-content-hooks-git
 <!-- /TITLE -->
 
 <!-- BADGES/ -->
   <p>
-    <a href="https://npmjs.org/package/undefined">
+    <a href="https://npmjs.org/package/nuxt-content-hooks-git">
       <img
-        src="https://img.shields.io/npm/v/undefined.svg"
+        src="https://img.shields.io/npm/v/nuxt-content-hooks-git.svg"
         alt="npm version"
       >
     </a><img src="https://img.shields.io/badge/os-linux%20%7C%C2%A0macos%20%7C%C2%A0windows-blue" alt="Linux macOS Windows compatible"><a href="https://github.com/dword-design/nuxt-content-git-hooks/actions">
@@ -46,7 +46,7 @@
 <!-- /BADGES -->
 
 <!-- DESCRIPTION/ -->
-
+nuxt-content hooks that replace or add createdAt and updatedAt dates based on the git history.
 <!-- /DESCRIPTION -->
 
 <!-- INSTALL/ -->
@@ -54,12 +54,44 @@
 
 ```bash
 # npm
-$ npm install undefined
+$ npm install nuxt-content-hooks-git
 
 # Yarn
-$ yarn add undefined
+$ yarn add nuxt-content-hooks-git
 ```
 <!-- /INSTALL -->
+
+## Usage
+
+Add the hooks to your hooks config:
+
+```js
+import nuxtContentHooksGit from 'nuxt-content-hooks-git'
+
+export default {
+  hooks: {
+    ...
+    ...nuxtContentHooksGit(),
+  },
+}
+```
+
+This will replace `doc.createdAt` and `doc.updatedAt` with the dates from the Git log.
+
+It is also possible to not override the values but instead specify the field names like this:
+
+```js
+import nuxtContentHooksGit from 'nuxt-content-hooks-git'
+
+export default {
+  hooks: {
+    ...
+    ...nuxtContentHooksGit({ createdAtName: 'gitCreatedAt', updatedAtName: 'gitUpdatedAt' }),
+  },
+}
+```
+
+Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
 
 <!-- LICENSE/ -->
 ## Contributing

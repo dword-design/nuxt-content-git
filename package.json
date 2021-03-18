@@ -1,6 +1,7 @@
 {
+  "name": "nuxt-content-hooks-git",
   "version": "1.0.0",
-  "description": "",
+  "description": "nuxt-content hooks that replace or add createdAt and updatedAt dates based on the git history.",
   "repository": "dword-design/nuxt-content-git-hooks",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
