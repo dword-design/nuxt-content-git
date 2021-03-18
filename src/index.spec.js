@@ -17,6 +17,8 @@ export default tester(
     'custom field names': function () {
       return withLocalTmpDir(async () => {
         await execa.command('git init')
+        await execa.command('git config user.email "foo@bar.de"')
+        await execa.command('git config user.name "foo"')
         await outputFiles({
           'content/home.md': '',
           'pages/index.vue': endent`
@@ -120,6 +122,8 @@ export default tester(
     works() {
       return withLocalTmpDir(async () => {
         await execa.command('git init')
+        await execa.command('git config user.email "foo@bar.de"')
+        await execa.command('git config user.name "foo"')
         await outputFiles({
           'content/home.md': '',
           'pages/index.vue': endent`
