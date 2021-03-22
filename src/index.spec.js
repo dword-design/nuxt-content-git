@@ -10,8 +10,6 @@ import P from 'path'
 import simpleGit from 'simple-git'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
-import self from '.'
-
 export default tester(
   {
     'custom field names': function () {
@@ -46,13 +44,19 @@ export default tester(
         const createdAt = new Date(log.all[0].date)
         const updatedAt = new Date(log.latest.date)
         const nuxt = new Nuxt({
+          build: { quiet: false },
           createRequire: 'native',
           dev: false,
-          hooks: self({
-            createdAtName: 'gitCreatedAt',
-            updatedAtName: 'gitUpdatedAt',
-          }),
-          modules: [packageName`@nuxt/content`],
+          modules: [
+            [
+              '~/../src',
+              {
+                createdAtName: 'gitCreatedAt',
+                updatedAtName: 'gitUpdatedAt',
+              },
+            ],
+            packageName`@nuxt/content`,
+          ],
         })
         await new Builder(nuxt).build()
         try {
@@ -99,8 +103,7 @@ export default tester(
         const nuxt = new Nuxt({
           createRequire: 'native',
           dev: false,
-          hooks: self(),
-          modules: [packageName`@nuxt/content`],
+          modules: ['~/../src', packageName`@nuxt/content`],
         })
         await new Builder(nuxt).build()
         try {
@@ -154,10 +157,10 @@ export default tester(
         const createdAt = new Date(log.all |> last |> property('date'))
         const updatedAt = new Date(log.latest.date)
         const nuxt = new Nuxt({
+          build: { quiet: false },
           createRequire: 'native',
           dev: false,
-          hooks: self(),
-          modules: [packageName`@nuxt/content`],
+          modules: ['~/../src', packageName`@nuxt/content`],
         })
         await new Builder(nuxt).build()
         try {

@@ -1,27 +1,27 @@
 <!-- TITLE/ -->
-# nuxt-content-hooks-git
+# nuxt-content-git
 <!-- /TITLE -->
 
 <!-- BADGES/ -->
   <p>
-    <a href="https://npmjs.org/package/nuxt-content-hooks-git">
+    <a href="https://npmjs.org/package/nuxt-content-git">
       <img
-        src="https://img.shields.io/npm/v/nuxt-content-hooks-git.svg"
+        src="https://img.shields.io/npm/v/nuxt-content-git.svg"
         alt="npm version"
       >
-    </a><img src="https://img.shields.io/badge/os-linux%20%7C%C2%A0macos%20%7C%C2%A0windows-blue" alt="Linux macOS Windows compatible"><a href="https://github.com/dword-design/nuxt-content-hooks-git/actions">
+    </a><img src="https://img.shields.io/badge/os-linux%20%7C%C2%A0macos%20%7C%C2%A0windows-blue" alt="Linux macOS Windows compatible"><a href="https://github.com/dword-design/nuxt-content-git/actions">
       <img
-        src="https://github.com/dword-design/nuxt-content-hooks-git/workflows/build/badge.svg"
+        src="https://github.com/dword-design/nuxt-content-git/workflows/build/badge.svg"
         alt="Build status"
       >
-    </a><a href="https://codecov.io/gh/dword-design/nuxt-content-hooks-git">
+    </a><a href="https://codecov.io/gh/dword-design/nuxt-content-git">
       <img
-        src="https://codecov.io/gh/dword-design/nuxt-content-hooks-git/branch/master/graph/badge.svg"
+        src="https://codecov.io/gh/dword-design/nuxt-content-git/branch/master/graph/badge.svg"
         alt="Coverage status"
       >
-    </a><a href="https://david-dm.org/dword-design/nuxt-content-hooks-git">
-      <img src="https://img.shields.io/david/dword-design/nuxt-content-hooks-git" alt="Dependency status">
-    </a><img src="https://img.shields.io/badge/renovate-enabled-brightgreen" alt="Renovate enabled"><br/><a href="https://gitpod.io/#https://github.com/dword-design/nuxt-content-hooks-git">
+    </a><a href="https://david-dm.org/dword-design/nuxt-content-git">
+      <img src="https://img.shields.io/david/dword-design/nuxt-content-git" alt="Dependency status">
+    </a><img src="https://img.shields.io/badge/renovate-enabled-brightgreen" alt="Renovate enabled"><br/><a href="https://gitpod.io/#https://github.com/dword-design/nuxt-content-git">
       <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
     </a><a href="https://www.buymeacoffee.com/dword">
       <img
@@ -46,7 +46,7 @@
 <!-- /BADGES -->
 
 <!-- DESCRIPTION/ -->
-nuxt-content hooks that replace or add createdAt and updatedAt dates based on the git history.
+Additional module for @nuxt/content that replace or adds createdAt and updatedAt dates based on the git history.
 <!-- /DESCRIPTION -->
 
 <!-- INSTALL/ -->
@@ -54,24 +54,22 @@ nuxt-content hooks that replace or add createdAt and updatedAt dates based on th
 
 ```bash
 # npm
-$ npm install nuxt-content-hooks-git
+$ npm install nuxt-content-git
 
 # Yarn
-$ yarn add nuxt-content-hooks-git
+$ yarn add nuxt-content-git
 ```
 <!-- /INSTALL -->
 
 ## Usage
 
-Add the hooks to your hooks config:
+Add the module to your `nuxt.config.js` file *before* `@nuxt/content`:
 
 ```js
-import nuxtContentHooksGit from 'nuxt-content-hooks-git'
-
 export default {
-  hooks: {
-    ...
-    ...nuxtContentHooksGit(),
+  modules: [
+    'nuxt-content-git',
+    '@nuxt/content',
   },
 }
 ```
@@ -81,13 +79,14 @@ This will replace `doc.createdAt` and `doc.updatedAt` with the dates from the Gi
 It is also possible to not override the values but instead specify the field names like this:
 
 ```js
-import nuxtContentHooksGit from 'nuxt-content-hooks-git'
-
 export default {
-  hooks: {
-    ...
-    ...nuxtContentHooksGit({ createdAtName: 'gitCreatedAt', updatedAtName: 'gitUpdatedAt' }),
-  },
+  modules: [
+    ['nuxt-content-git', {
+      createdAtName: 'gitCreatedAt',
+      updatedAtName: 'gitUpdatedAt',
+    }],
+    '@nuxt/content',
+  ],
 }
 ```
 
@@ -96,7 +95,7 @@ Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
 <!-- LICENSE/ -->
 ## Contributing
 
-Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/nuxt-content-hooks-git/issues) or [pull request](https://github.com/dword-design/nuxt-content-hooks-git/pulls)! ⚙️
+Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/nuxt-content-git/issues) or [pull request](https://github.com/dword-design/nuxt-content-git/pulls)! ⚙️
 
 ## Support Me
 
