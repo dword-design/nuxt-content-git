@@ -63,7 +63,7 @@ $ yarn add nuxt-content-git
 
 ## Usage
 
-Add the module to your `nuxt.config.js` file *before* `@nuxt/content`:
+Add the module to your `nuxt.config.js` file **before** `@nuxt/content`:
 
 ```js
 export default {
