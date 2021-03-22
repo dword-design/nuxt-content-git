@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dword-design/nuxt-content-git/compare/v1.0.0...v1.0.1) (2021-03-22)
+
+
+### Bug Fixes
+
+* update readme ([ff18146](https://github.com/dword-design/nuxt-content-git/commit/ff181465d9ea1524b35ce6b1a7b18819f91bacbe))
+
 # 1.0.0 (2021-03-22)
 
 
