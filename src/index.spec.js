@@ -39,10 +39,15 @@ export default tester(
         })
         await execa.command('git add .')
         await execa.command('git commit -m init')
+
         const git = simpleGit()
+
         const log = await git.log({ file: P.join('content', 'home.md') })
+
         const createdAt = new Date(log.all[0].date)
+
         const updatedAt = new Date(log.latest.date)
+
         const nuxt = new Nuxt({
           build: { quiet: false },
           createRequire: 'native',
@@ -62,10 +67,12 @@ export default tester(
         try {
           await nuxt.listen()
           await this.page.goto('http://localhost:3000')
+
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
             createdAt.toISOString()
           )
+
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
             updatedAt.toISOString()
@@ -97,9 +104,13 @@ export default tester(
 
           `,
         })
+
         const fileStats = await stat(P.join('content', 'home.md'))
+
         const createdAt = fileStats.birthtime
+
         const updatedAt = fileStats.mtime
+
         const nuxt = new Nuxt({
           createRequire: 'native',
           dev: false,
@@ -109,10 +120,12 @@ export default tester(
         try {
           await nuxt.listen()
           await this.page.goto('http://localhost:3000')
+
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
             createdAt.toISOString()
           )
+
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
             updatedAt.toISOString()
@@ -152,10 +165,15 @@ export default tester(
         await outputFile(P.join('content', 'home.md'), 'foo')
         await execa.command('git add .')
         await execa.command('git commit -m update')
+
         const git = simpleGit()
+
         const log = await git.log({ file: P.join('content', 'home.md') })
+
         const createdAt = new Date(log.all |> last |> property('date'))
+
         const updatedAt = new Date(log.latest.date)
+
         const nuxt = new Nuxt({
           build: { quiet: false },
           createRequire: 'native',
@@ -166,10 +184,12 @@ export default tester(
         try {
           await nuxt.listen()
           await this.page.goto('http://localhost:3000')
+
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
             createdAt.toISOString()
           )
+
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
             updatedAt.toISOString()
