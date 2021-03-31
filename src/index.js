@@ -12,7 +12,9 @@ export default function (options) {
   console.log('foo')
   this.nuxt.hook('content:file:beforeInsert', async (file, database) => {
     console.log(file)
+
     const git = simpleGit()
+
     const log = await git.log({
       file: P.join(database.dir, `${file.path}${file.extension}`),
     })
