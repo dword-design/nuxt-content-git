@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/dword-design/nuxt-content-git/compare/v1.0.4...v1.0.5) (2021-04-06)
+
+
+### Bug Fixes
+
+* remove console.log ([b2abe8c](https://github.com/dword-design/nuxt-content-git/commit/b2abe8ca22526a866079faffc82d79558bf96278))
+
 ## [1.0.4](https://github.com/dword-design/nuxt-content-git/compare/v1.0.3...v1.0.4) (2021-03-31)
 
 
