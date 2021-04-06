@@ -9,9 +9,7 @@ export default function (options) {
     ...this.options.nuxtContentGit,
     ...options,
   }
-  console.log('foo')
   this.nuxt.hook('content:file:beforeInsert', async (file, database) => {
-    console.log(file)
 
     const git = simpleGit()
 
