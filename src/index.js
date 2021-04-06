@@ -10,7 +10,6 @@ export default function (options) {
     ...options,
   }
   this.nuxt.hook('content:file:beforeInsert', async (file, database) => {
-
     const git = simpleGit()
 
     const log = await git.log({
