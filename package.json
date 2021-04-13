@@ -1,7 +1,7 @@
 {
   "name": "nuxt-content-git",
   "version": "1.0.6",
-  "description": "Additional module for @nuxt/content that replace or adds createdAt and updatedAt dates based on the git history.",
+  "description": "Additional module for @nuxt/content that replaces or adds createdAt and updatedAt dates based on the git history.",
   "repository": "dword-design/nuxt-content-git",
   "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
