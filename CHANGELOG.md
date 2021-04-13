@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/dword-design/nuxt-content-git/compare/v1.0.6...v1.0.7) (2021-04-13)
+
+
+### Bug Fixes
+
+* update config files ([b7e0886](https://github.com/dword-design/nuxt-content-git/commit/b7e088682e426c5b0bc6e0421536168bcc186aa7))
+* update description ([2f165df](https://github.com/dword-design/nuxt-content-git/commit/2f165df63fa5331ddd55cdfdc964585610e7384d))
+
 ## [1.0.6](https://github.com/dword-design/nuxt-content-git/compare/v1.0.5...v1.0.6) (2021-04-12)
 
 
