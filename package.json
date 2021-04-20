@@ -38,5 +38,19 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": [
+    "frontend",
+    "javascript",
+    "node",
+    "nodejs",
+    "npm",
+    "npm-package",
+    "nuxt",
+    "nuxt-content",
+    "nuxt-module",
+    "nuxtjs",
+    "nuxtjs-module",
+    "webdevelopment"
+  ]
 }
