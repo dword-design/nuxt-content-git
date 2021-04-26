@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/dword-design/nuxt-content-git/compare/v1.0.8...v1.0.9) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency with-local-tmp-dir to v3 ([#16](https://github.com/dword-design/nuxt-content-git/issues/16)) ([ac45d46](https://github.com/dword-design/nuxt-content-git/commit/ac45d46922522c2aae0ac9870cfd6e40b30c5686))
+
 ## [1.0.8](https://github.com/dword-design/nuxt-content-git/compare/v1.0.7...v1.0.8) (2021-04-20)
 
 
