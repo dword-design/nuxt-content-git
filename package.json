@@ -38,7 +38,7 @@
     "simple-git": "^2.37.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^7.9.0",
+    "@dword-design/base": "^8.0.0",
     "@dword-design/puppeteer": "^4.0.0",
     "@dword-design/tester": "^1.2.1",
     "@dword-design/tester-plugin-puppeteer": "^2.0.0",
@@ -49,6 +49,9 @@
     "nuxt": "^2.15.3",
     "output-files": "^1.1.21",
     "with-local-tmp-dir": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "publishConfig": {
     "access": "public"
