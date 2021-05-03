@@ -47,7 +47,7 @@
     "execa": "^5.0.0",
     "fs-extra": "^9.1.0",
     "nuxt": "^2.15.3",
-    "output-files": "^1.1.21",
+    "output-files": "^2.0.0",
     "with-local-tmp-dir": "^3.0.0"
   },
   "engines": {
