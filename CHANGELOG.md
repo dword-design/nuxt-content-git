@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/dword-design/nuxt-content-git/compare/v1.0.10...v2.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v8 ([#20](https://github.com/dword-design/nuxt-content-git/issues/20)) ([2dab55d](https://github.com/dword-design/nuxt-content-git/commit/2dab55dffc59d109ae2d2302d2c52c0cf79cb91e))
+
+
+### BREAKING CHANGES
+
+* require Node.js >= 12
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Sebastian Landwehr <info@dword-design.de>
+Co-authored-by: GitHub Actions <actions@github.com>
+
 ## [1.0.10](https://github.com/dword-design/nuxt-content-git/compare/v1.0.9...v1.0.10) (2021-04-26)
 
 
