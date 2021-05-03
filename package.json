@@ -34,7 +34,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/functions": "^3.0.0",
+    "@dword-design/functions": "^4.0.0",
     "simple-git": "^2.37.0"
   },
   "devDependencies": {
