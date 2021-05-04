@@ -1,3 +1,11 @@
+## [2.0.3](https://github.com/dword-design/nuxt-content-git/compare/v2.0.2...v2.0.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/puppeteer to v5 ([#22](https://github.com/dword-design/nuxt-content-git/issues/22)) ([2940e82](https://github.com/dword-design/nuxt-content-git/commit/2940e82aead2a40106c59deeb7ffe66ac8486c12))
+* update dependency with-local-tmp-dir to v4 ([#27](https://github.com/dword-design/nuxt-content-git/issues/27)) ([c2c5825](https://github.com/dword-design/nuxt-content-git/commit/c2c5825fb40339874f484c2fc756e5d0d0a8cefc))
+
 ## [2.0.2](https://github.com/dword-design/nuxt-content-git/compare/v2.0.1...v2.0.2) (2021-05-04)
 
 
