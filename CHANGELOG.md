@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/dword-design/nuxt-content-git/compare/v2.0.0...v2.0.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v4 ([#21](https://github.com/dword-design/nuxt-content-git/issues/21)) ([2563c89](https://github.com/dword-design/nuxt-content-git/commit/2563c895f76663da51582739a5f52f70f8ce3691))
+
 # [2.0.0](https://github.com/dword-design/nuxt-content-git/compare/v1.0.10...v2.0.0) (2021-05-03)
 
 
