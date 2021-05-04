@@ -1,3 +1,13 @@
+## [2.0.2](https://github.com/dword-design/nuxt-content-git/compare/v2.0.1...v2.0.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/tester to v2 ([#23](https://github.com/dword-design/nuxt-content-git/issues/23)) ([55eb0a7](https://github.com/dword-design/nuxt-content-git/commit/55eb0a782d78daa6323a73d572d391bf2e8740cb))
+* update dependency depcheck-package-name to v2 ([#24](https://github.com/dword-design/nuxt-content-git/issues/24)) ([1185638](https://github.com/dword-design/nuxt-content-git/commit/118563807212f33a2d28a9b379ca6eccfb20e5df))
+* update dependency fs-extra to v10 ([#25](https://github.com/dword-design/nuxt-content-git/issues/25)) ([472042e](https://github.com/dword-design/nuxt-content-git/commit/472042e92e51ed227e14affd172373cec47e2415))
+* update dependency output-files to v2 ([#26](https://github.com/dword-design/nuxt-content-git/issues/26)) ([ffd931a](https://github.com/dword-design/nuxt-content-git/commit/ffd931a5df7a054f53e39272a14c14eebff7bdfd))
+
 ## [2.0.1](https://github.com/dword-design/nuxt-content-git/compare/v2.0.0...v2.0.1) (2021-05-04)
 
 
