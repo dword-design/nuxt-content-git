@@ -45,7 +45,7 @@
     "@nuxt/content": "^1.14.0",
     "depcheck-package-name": "^1.0.3",
     "execa": "^5.0.0",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^10.0.0",
     "nuxt": "^2.15.3",
     "output-files": "^1.1.21",
     "with-local-tmp-dir": "^3.0.0"
