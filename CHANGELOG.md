@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/dword-design/nuxt-content-git/compare/v2.0.5...v2.0.6) (2021-06-29)
+
+
+### Bug Fixes
+
+* see also ([263cc9f](https://github.com/dword-design/nuxt-content-git/commit/263cc9f5f67c77751619214efb512d39ce6fa72d))
+
 ## [2.0.5](https://github.com/dword-design/nuxt-content-git/compare/v2.0.4...v2.0.5) (2021-06-14)
 
 
