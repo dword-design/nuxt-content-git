@@ -1,3 +1,11 @@
+## [2.0.10](https://github.com/dword-design/nuxt-content-git/compare/v2.0.9...v2.0.10) (2021-11-24)
+
+
+### Bug Fixes
+
+* fix spelling ([fa7c325](https://github.com/dword-design/nuxt-content-git/commit/fa7c3252a98a51e0678c736fbc27ff5c7ae34c25))
+* update config files ([13bcfd0](https://github.com/dword-design/nuxt-content-git/commit/13bcfd0207de5c09a880c3ca9ec1f482190848ba))
+
 ## [2.0.9](https://github.com/dword-design/nuxt-content-git/compare/v2.0.8...v2.0.9) (2021-07-20)
 
 
