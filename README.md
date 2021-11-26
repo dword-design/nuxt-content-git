@@ -108,7 +108,7 @@ To do a deep clone in a GitHub Actions workflow, configure the checkout step the
     fetch-depth: 0
 ```
 
-Also keep in mind that when deploying to static site hosters like GitHub Pages, you also need to do a deep clone on the system where you are generating the site. So do a local regular clone when generating locally, or use the config above for GitHub actions.
+Keep in mind that when deploying to static site hosters like GitHub Pages, you also need to do a deep clone on the system where you are generating the site. So do a local regular clone when generating locally, or use the config above for GitHub actions.
 
 <!-- LICENSE/ -->
 ## Contribute
