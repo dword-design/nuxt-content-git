@@ -1,3 +1,11 @@
+## [2.0.11](https://github.com/dword-design/nuxt-content-git/compare/v2.0.10...v2.0.11) (2021-11-26)
+
+
+### Bug Fixes
+
+* doc deployment ([0905b89](https://github.com/dword-design/nuxt-content-git/commit/0905b892d6d7cb39f6ec9c961f48390412c0cfc3))
+* document deployment ([3d1fe31](https://github.com/dword-design/nuxt-content-git/commit/3d1fe3144a0596cef43e3ae87c9a140e068151d4))
+
 ## [2.0.10](https://github.com/dword-design/nuxt-content-git/compare/v2.0.9...v2.0.10) (2021-11-24)
 
 
