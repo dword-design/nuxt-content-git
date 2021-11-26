@@ -96,6 +96,20 @@ export default {
 
 Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
 
+## Deployment
+
+The module uses the Git history to calculate the dates. That is why the history also needs to be checked out when deploying the project to live. During local development the repository is usually deeply cloned. But CI systems like GitHub Actions often only do a shallow clone for performance reasons, which will result in wrong dates.
+
+To do a deep clone in a GitHub Actions workflow, configure the checkout step the following way:
+
+```yaml
+- uses: actions/checkout
+  with:
+    fetch-depth: 0
+```
+
+Also keep in mind that when deploying to static site hosters like GitHub Pages, you also need to do a deep clone on the system where you are generating the site. So do a local regular clone when generating locally, or use the config above for GitHub actions.
+
 <!-- LICENSE/ -->
 ## Contribute
 
