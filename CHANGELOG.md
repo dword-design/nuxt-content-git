@@ -1,3 +1,10 @@
+## [2.0.13](https://github.com/dword-design/nuxt-content-git/compare/v2.0.12...v2.0.13) (2022-01-12)
+
+
+### Bug Fixes
+
+* update config files ([56a5913](https://github.com/dword-design/nuxt-content-git/commit/56a5913adc496fff15a2fdebe79af674b4f6b4f7))
+
 ## [2.0.12](https://github.com/dword-design/nuxt-content-git/compare/v2.0.11...v2.0.12) (2022-01-04)
 
 
