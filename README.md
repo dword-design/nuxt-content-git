@@ -50,7 +50,7 @@
 <!-- /BADGES -->
 
 <!-- DESCRIPTION/ -->
-Additional module for @nuxt/content that replaces or adds createdAt and updatedAt dates based on the Git history.
+Additional module for @nuxt/content that replaces or adds createdAt and updatedAt dates based on the git history.
 <!-- /DESCRIPTION -->
 
 <!-- INSTALL/ -->
