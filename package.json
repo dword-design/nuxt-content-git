@@ -1,6 +1,6 @@
 {
   "name": "nuxt-content-git",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "description": "Additional module for @nuxt/content that replaces or adds createdAt and updatedAt dates based on the git history.",
   "keywords": [
     "frontend",
