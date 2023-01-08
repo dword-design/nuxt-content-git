@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/dword-design/nuxt-content-git/compare/v2.0.14...v3.0.0) (2023-01-08)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#65](https://github.com/dword-design/nuxt-content-git/issues/65)) ([5738ed7](https://github.com/dword-design/nuxt-content-git/commit/5738ed7eafa8f3ab79311f293ad4877971c8492e))
+
+
+### BREAKING CHANGES
+
+* drop node 12 support
+
 ## [2.0.14](https://github.com/dword-design/nuxt-content-git/compare/v2.0.13...v2.0.14) (2022-02-08)
 
 
