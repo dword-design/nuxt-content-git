@@ -2,21 +2,23 @@ import { endent, last, property } from '@dword-design/functions'
 import tester from '@dword-design/tester'
 import testerPluginPuppeteer from '@dword-design/tester-plugin-puppeteer'
 import packageName from 'depcheck-package-name'
-import execa from 'execa'
-import { outputFile, stat } from 'fs-extra'
+import { execaCommand } from 'execa'
+import fs from 'fs-extra'
 import { Builder, Nuxt } from 'nuxt'
 import outputFiles from 'output-files'
 import P from 'path'
 import simpleGit from 'simple-git'
 import withLocalTmpDir from 'with-local-tmp-dir'
 
+import self from './index.js'
+
 export default tester(
   {
-    'custom field names': function () {
+    'custom field names'() {
       return withLocalTmpDir(async () => {
-        await execa.command('git init')
-        await execa.command('git config user.email "foo@bar.de"')
-        await execa.command('git config user.name "foo"')
+        await execaCommand('git init')
+        await execaCommand('git config user.email "foo@bar.de"')
+        await execaCommand('git config user.name "foo"')
         await outputFiles({
           'content/home.md': '',
           'pages/index.vue': endent`
@@ -37,8 +39,8 @@ export default tester(
 
           `,
         })
-        await execa.command('git add .')
-        await execa.command('git commit -m init')
+        await execaCommand('git add .')
+        await execaCommand('git commit -m init')
 
         const git = simpleGit()
 
@@ -49,12 +51,11 @@ export default tester(
         const updatedAt = new Date(log.latest.date)
 
         const nuxt = new Nuxt({
-          build: { quiet: false },
           createRequire: 'native',
           dev: false,
           modules: [
             [
-              '~/../src',
+              self,
               {
                 createdAtName: 'gitCreatedAt',
                 updatedAtName: 'gitUpdatedAt',
@@ -82,7 +83,7 @@ export default tester(
         }
       })
     },
-    'no git': function () {
+    'no git'() {
       return withLocalTmpDir(async () => {
         await outputFiles({
           'content/home.md': '',
@@ -105,16 +106,15 @@ export default tester(
           `,
         })
 
-        const fileStats = await stat(P.join('content', 'home.md'))
+        const fileStats = await fs.stat(P.join('content', 'home.md'))
 
         const createdAt = fileStats.birthtime
 
         const updatedAt = fileStats.mtime
 
         const nuxt = new Nuxt({
-          createRequire: 'native',
           dev: false,
-          modules: ['~/../src', packageName`@nuxt/content`],
+          modules: [self, packageName`@nuxt/content`],
         })
         await new Builder(nuxt).build()
         try {
@@ -137,9 +137,9 @@ export default tester(
     },
     works() {
       return withLocalTmpDir(async () => {
-        await execa.command('git init')
-        await execa.command('git config user.email "foo@bar.de"')
-        await execa.command('git config user.name "foo"')
+        await execaCommand('git init')
+        await execaCommand('git config user.email "foo@bar.de"')
+        await execaCommand('git config user.name "foo"')
         await outputFiles({
           'content/home.md': '',
           'pages/index.vue': endent`
@@ -160,11 +160,11 @@ export default tester(
 
           `,
         })
-        await execa.command('git add .')
-        await execa.command('git commit -m init')
-        await outputFile(P.join('content', 'home.md'), 'foo')
-        await execa.command('git add .')
-        await execa.command('git commit -m update')
+        await execaCommand('git add .')
+        await execaCommand('git commit -m init')
+        await fs.outputFile(P.join('content', 'home.md'), 'foo')
+        await execaCommand('git add .')
+        await execaCommand('git commit -m update')
 
         const git = simpleGit()
 
@@ -175,10 +175,8 @@ export default tester(
         const updatedAt = new Date(log.latest.date)
 
         const nuxt = new Nuxt({
-          build: { quiet: false },
-          createRequire: 'native',
           dev: false,
-          modules: ['~/../src', packageName`@nuxt/content`],
+          modules: [self, packageName`@nuxt/content`],
         })
         await new Builder(nuxt).build()
         try {
