@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dword-design/nuxt-content-git/compare/v3.0.0...v3.0.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* update dependency execa to v7 ([#75](https://github.com/dword-design/nuxt-content-git/issues/75)) ([69da179](https://github.com/dword-design/nuxt-content-git/commit/69da17913a4214ab8f8966ebf4cbf155203f5f22))
+
 # [3.0.0](https://github.com/dword-design/nuxt-content-git/compare/v2.0.14...v3.0.0) (2023-01-08)
 
 
