@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/dword-design/nuxt-content-git/compare/v3.0.2...v3.0.3) (2023-03-15)
+
+
+### Bug Fixes
+
+* update dependency output-files to v2.0.11 ([fa3feb5](https://github.com/dword-design/nuxt-content-git/commit/fa3feb558f1252af07ac8d18d85d35cafbcaf7a3))
+
 ## [3.0.2](https://github.com/dword-design/nuxt-content-git/compare/v3.0.1...v3.0.2) (2023-03-15)
 
 
