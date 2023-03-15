@@ -71,12 +71,12 @@ export default tester(
 
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
-            createdAt.toISOString()
+            createdAt.toISOString(),
           )
 
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
-            updatedAt.toISOString()
+            updatedAt.toISOString(),
           )
         } finally {
           nuxt.close()
@@ -123,12 +123,12 @@ export default tester(
 
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
-            createdAt.toISOString()
+            createdAt.toISOString(),
           )
 
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
-            updatedAt.toISOString()
+            updatedAt.toISOString(),
           )
         } finally {
           nuxt.close()
@@ -185,12 +185,12 @@ export default tester(
 
           const $createdAt = await this.page.waitForSelector('.created-at')
           expect(await $createdAt.evaluate(el => el.innerText)).toEqual(
-            createdAt.toISOString()
+            createdAt.toISOString(),
           )
 
           const $updatedAt = await this.page.waitForSelector('.updated-at')
           expect(await $updatedAt.evaluate(el => el.innerText)).toEqual(
-            updatedAt.toISOString()
+            updatedAt.toISOString(),
           )
         } finally {
           nuxt.close()
@@ -198,5 +198,5 @@ export default tester(
       })
     },
   },
-  [testerPluginPuppeteer()]
+  [testerPluginPuppeteer()],
 )
