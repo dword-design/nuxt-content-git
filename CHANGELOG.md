@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/dword-design/nuxt-content-git/compare/v3.0.5...v3.0.6) (2023-03-18)
+
+
+### Bug Fixes
+
+* update dependency nuxt to v2.16.3 ([a09ed87](https://github.com/dword-design/nuxt-content-git/commit/a09ed879f730892ea8687ea0d52615185375f49b))
+
 ## [3.0.5](https://github.com/dword-design/nuxt-content-git/compare/v3.0.4...v3.0.5) (2023-03-16)
 
 
