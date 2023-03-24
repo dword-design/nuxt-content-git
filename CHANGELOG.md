@@ -1,3 +1,10 @@
+## [3.0.15](https://github.com/dword-design/nuxt-content-git/compare/v3.0.14...v3.0.15) (2023-03-24)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/puppeteer to v6.0.4 ([ecd5e66](https://github.com/dword-design/nuxt-content-git/commit/ecd5e661a1034d03b29a64afbe916eb581e6b41b))
+
 ## [3.0.14](https://github.com/dword-design/nuxt-content-git/compare/v3.0.13...v3.0.14) (2023-03-24)
 
 
