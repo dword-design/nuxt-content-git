@@ -1,3 +1,10 @@
+## [3.0.20](https://github.com/dword-design/nuxt-content-git/compare/v3.0.19...v3.0.20) (2023-04-09)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/tester to v2.0.14 ([96d4db4](https://github.com/dword-design/nuxt-content-git/commit/96d4db470b343d961569f7c27b10092d4d2b4119))
+
 ## [3.0.19](https://github.com/dword-design/nuxt-content-git/compare/v3.0.18...v3.0.19) (2023-04-07)
 
 
