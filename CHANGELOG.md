@@ -1,3 +1,10 @@
+## [3.0.21](https://github.com/dword-design/nuxt-content-git/compare/v3.0.20...v3.0.21) (2023-04-09)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#76](https://github.com/dword-design/nuxt-content-git/issues/76)) ([56f2d89](https://github.com/dword-design/nuxt-content-git/commit/56f2d89bc9e1a4d7e7fd4f2265f2b9116047cd3a))
+
 ## [3.0.20](https://github.com/dword-design/nuxt-content-git/compare/v3.0.19...v3.0.20) (2023-04-09)
 
 
