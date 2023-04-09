@@ -1,3 +1,10 @@
+## [3.0.23](https://github.com/dword-design/nuxt-content-git/compare/v3.0.22...v3.0.23) (2023-04-09)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v4.1.7 ([ff8101a](https://github.com/dword-design/nuxt-content-git/commit/ff8101ad1487892ad33a35d37e2bf6ee4644af52))
+
 ## [3.0.22](https://github.com/dword-design/nuxt-content-git/compare/v3.0.21...v3.0.22) (2023-04-09)
 
 
