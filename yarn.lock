@@ -1683,9 +1683,9 @@
     xvfb "^0.4.0"
 
 "@dword-design/tester@^2.0.0":
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/@dword-design/tester/-/tester-2.0.14.tgz#27de7206b869508c3521693e4704e0738e2674c7"
-  integrity sha512-iffJI+cx0DqG4roZYwyvZgdDOIBFbAyHtcRRUfpb6Rrf3vA50srDl9HkviC2gKAhMEZBpKhEcU3po1EPCtQxbg==
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/@dword-design/tester/-/tester-2.0.18.tgz#7b5cf68902e67bed987bca7097b907a1a601102a"
+  integrity sha512-dbWbk5dnOfRbPZJq6qnXVwn0leDWTC2PI/ufULcuA/zHgDeNvq55AgLH0dvknjDhY1k4SYNCHlpvWlLkHJqKtA==
   dependencies:
     "@dword-design/functions" "^4.0.0"
 
