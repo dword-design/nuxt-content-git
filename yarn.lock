@@ -12190,9 +12190,9 @@ os-tmpdir@~1.0.2:
   integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
 output-files@^2.0.0:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/output-files/-/output-files-2.0.23.tgz#d7fb13fca4ba425f78f35048ac086ec3601bdbad"
-  integrity sha512-55SUoGYSgs5ODyJ4nwb6UE0kkbFYwEgRQlPtIcxbTZX5PLXA3QumBWfBCNP9qNlQNNzNI+wnrJZzN/nXHE7bHQ==
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/output-files/-/output-files-2.0.25.tgz#134de6f795816250b5a947581d82b8c965e391ef"
+  integrity sha512-5hM8xmd+n2yVKLjewZkrkRLhs4jebc9O2xf5vxVZkUDTqr6dvhTaTr/xWOw3SE3D8aAjXI7s5ETN3wz1nGK8oA==
   dependencies:
     "@dword-design/functions" "^4.0.0"
     fs-extra "^11.1.0"
