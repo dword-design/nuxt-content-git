@@ -1675,9 +1675,9 @@
   integrity sha512-4VmNnOzObyXEAdfzLbNZ2RAy00ci7EB954kkB8wz+GEU8v4tMMtf+D36BRUFRUCVJRPpxG8nLkgZ1Lh59ndoFw==
 
 "@dword-design/tester-plugin-puppeteer@^2.0.0":
-  version "2.1.60"
-  resolved "https://registry.yarnpkg.com/@dword-design/tester-plugin-puppeteer/-/tester-plugin-puppeteer-2.1.60.tgz#b525c7fdd0e3683c92decfed771aa8f06247e950"
-  integrity sha512-NjwnWwqUaan4sXXLDJC6D9PDyeuib+InhZNVCSViThZOm4HF4Ei2AQbZQSXnzZT3BtceW7prYJs/nRtzVYmRTg==
+  version "2.1.61"
+  resolved "https://registry.yarnpkg.com/@dword-design/tester-plugin-puppeteer/-/tester-plugin-puppeteer-2.1.61.tgz#b73ccd40442fe4725033e38264fc59a953fbc223"
+  integrity sha512-w4aAICIebNuFGx5Z43RjQA8NXJ/kUWBY33HnKu3vjVHsfR95Ye1yfZkbNrUd7GO3wWjcXc/D/RUe0QUFGPo1Gw==
   dependencies:
     is-docker "^3.0.0"
     xvfb "^0.4.0"
