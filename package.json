@@ -41,7 +41,7 @@
     "simple-git": "^3.15.1"
   },
   "devDependencies": {
-    "@dword-design/base": "^9.2.1",
+    "@dword-design/base": "^10.0.0",
     "@dword-design/puppeteer": "^6.0.2",
     "@dword-design/tester": "^2.0.0",
     "@dword-design/tester-plugin-puppeteer": "^2.0.0",

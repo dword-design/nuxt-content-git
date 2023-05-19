@@ -1485,10 +1485,10 @@
     load-pkg "^4.0.0"
     micromatch "^4.0.2"
 
-"@dword-design/base@^9.2.1":
-  version "9.5.22"
-  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-9.5.22.tgz#f1cb939f868a31eae6f92e70467ff063a836a488"
-  integrity sha512-BiKpiXv27d/PKxemtVutefz3Np1q755JkghgBkf8yx8PQ23S4mvSPEhz5cghsJvveWVcbdry0HBIeAUWKUNcZg==
+"@dword-design/base@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@dword-design/base/-/base-10.0.0.tgz#e8352bf1660c82616f9553a445d4b71348219ee3"
+  integrity sha512-DxLFGsBRty7RHN5S8WOV2YHsYgAFDnoz/Bo+doo4shELAPZrWVWgWDuPvfRBPHzeNjcmJF55WxcBrjpV2/NuIQ==
   dependencies:
     "@commitlint/cli" "^17.4.0"
     "@commitlint/config-conventional" "^17.4.0"
@@ -1528,7 +1528,6 @@
     ignore "^5.1.4"
     is-ci "^3.0.0"
     jiti "^1.16.0"
-    load-pkg "^4.0.0"
     make-cli "^3.0.0"
     mocha "^10.2.0"
     mocha-spec-reporter-with-file-names "npm:@dword-design/mocha-spec-reporter-with-file-names"
@@ -10215,14 +10214,7 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
-load-pkg@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/load-pkg/-/load-pkg-4.0.0.tgz#f80a29aec2f6d02aadde714099fda4eea1b611f1"
-  integrity sha512-xS6uYdbUzHbwO5bExhtM8RsU6Z/fVEfZE4uZpWQOwVygLSUfXz7J97nGzJfZ+FFCZc0Weabn/wA3y1k9Q7Y4mw==
-  dependencies:
-    find-pkg "^2.0.0"
-
-"load-pkg@npm:@dword-design/load-pkg":
+load-pkg@^4.0.0, "load-pkg@npm:@dword-design/load-pkg":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@dword-design/load-pkg/-/load-pkg-4.0.0.tgz#201f76adeb44c64ed22d789591ab740573fe0a5b"
   integrity sha512-lZxKRusgIqSg2y4jLzZzMPWyhrGPGke3YYmAxj4SoJeUGV4CmvYyhJkJnfA7Yaov7GMXZi64nlhx8D809VDazg==
