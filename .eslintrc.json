@@ -1,3 +1,13 @@
 {
-  "extends": "@dword-design/eslint-config"
+  "extends": "@dword-design/eslint-config",
+  "rules": {
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [
+          "#imports"
+        ]
+      }
+    ]
+  }
 }

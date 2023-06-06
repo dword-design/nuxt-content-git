@@ -1,25 +1,14 @@
-import { last, property } from '@dword-design/functions'
-import P from 'path'
-import simpleGit from 'simple-git'
+import { addServerPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 
-export default function (options) {
-  options = {
+const resolver = createResolver(import.meta.url)
+
+export default defineNuxtModule((options, nuxt) => {
+  nuxt.options.runtimeConfig.public.nuxtContentGit = {
     createdAtName: 'createdAt',
     updatedAtName: 'updatedAt',
-    ...this.options.nuxtContentGit,
+    ...nuxt.options.runtimeConfig.public.nuxtContentGit,
+    ...nuxt.options.nuxtContentGit,
     ...options,
   }
-  this.nuxt.hook('content:file:beforeInsert', async (file, database) => {
-    const git = simpleGit()
-
-    const log = await git.log({
-      file: P.join(database.dir, `${file.path}${file.extension}`),
-    })
-    file[options.createdAtName] =
-      log.all.length > 0
-        ? new Date(log.all |> last |> property('date'))
-        : file.createdAt
-    file[options.updatedAtName] =
-      log.latest === null ? file.updatedAt : new Date(log.latest.date)
-  })
-}
+  addServerPlugin(resolver.resolve('./server-plugin.js'))
+})
