@@ -1,4 +1,4 @@
-import { endent, last, pick, property } from '@dword-design/functions'
+import { endent, first, last, pick, property } from '@dword-design/functions'
 import tester from '@dword-design/tester'
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir'
 import axios from 'axios'
@@ -44,6 +44,8 @@ export default tester(
           </script>
         `,
       })
+      await fs.ensureDir('modules')
+      await fs.copy('../src', 'modules/self')
       await execaCommand('git add .')
       await execaCommand('git commit -m init')
 
@@ -63,10 +65,11 @@ export default tester(
           axios.get('http://localhost:3000/api/_content/query?_path=/home')
             |> await
             |> property('data')
+            |> first
             |> pick(['createdAt', 'updatedAt']),
         ).toEqual({
-          gitCreatedAt: createdAt,
-          gitUpdatedAt: updatedAt,
+          gitCreatedAt: createdAt.toISOString(),
+          gitUpdatedAt: updatedAt.toISOString(),
         })
       } finally {
         await kill(nuxt.pid)
@@ -78,12 +81,13 @@ export default tester(
         'nuxt.config.js': endent`
           export default {
             modules: [
-              '../src/index.js',
               '${packageName`@nuxt/content`}',
             ],
           }
         `,
       })
+      await fs.ensureDir('modules')
+      await fs.copy('../src', 'modules/self')
 
       const fileStats = await fs.stat(P.join('content', 'home.md'))
 
@@ -99,10 +103,11 @@ export default tester(
           axios.get('http://localhost:3000/api/_content/query?_path=/home')
             |> await
             |> property('data')
+            |> first
             |> pick(['createdAt', 'updatedAt']),
         ).toEqual({
-          createdAt,
-          updatedAt,
+          createdAt: createdAt.toISOString(),
+          updatedAt: updatedAt.toISOString(),
         })
       } finally {
         await kill(nuxt.pid)
@@ -117,12 +122,13 @@ export default tester(
         'nuxt.config.js': endent`
           export default {
             modules: [
-              '../src/index.js',
               '${packageName`@nuxt/content`}',
             ],
           }
         `,
       })
+      await fs.ensureDir('modules')
+      await fs.copy('../src', 'modules/self')
       await execaCommand('git add .')
       await execaCommand('git commit -m init')
       await fs.outputFile('content/home.md', 'foo')
@@ -136,6 +142,7 @@ export default tester(
       const createdAt = new Date(log.all |> last |> property('date'))
 
       const updatedAt = new Date(log.latest.date)
+
       const nuxt = execaCommand('nuxt dev')
       try {
         await nuxtDevReady()
@@ -143,10 +150,11 @@ export default tester(
           axios.get('http://localhost:3000/api/_content/query?_path=/home')
             |> await
             |> property('data')
+            |> first
             |> pick(['createdAt', 'updatedAt']),
         ).toEqual({
-          createdAt,
-          updatedAt,
+          createdAt: createdAt.toISOString(),
+          updatedAt: updatedAt.toISOString(),
         })
       } finally {
         await kill(nuxt.pid)
