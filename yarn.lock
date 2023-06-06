@@ -10418,9 +10418,9 @@ node-emoji@^1.10.0, node-emoji@^1.11.0:
     lodash "^4.17.21"
 
 node-fetch-native@^1.0.2, node-fetch-native@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.1.1.tgz#b8977dd7fe6c5599e417301ed3987bca787d3d6f"
-  integrity sha512-9VvspTSUp2Sxbl+9vbZTlFGq9lHwE8GDVVekxx6YsNd1YH59sb3Ba8v3Y3cD8PkLNcileGGcA21PFjVl0jzDaw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.2.0.tgz#13ec6df98f33168958dbfb6945f10aedf42e7ea8"
+  integrity sha512-5IAMBTl9p6PaAjYCnMv5FmqIF6GcZnawAVnzaCG0rX2aYZJ4CxEkZNtVPuTRug7fL7wyM5BQYTlAzcyMPi6oTQ==
 
 node-fetch@^2.6.7:
   version "2.6.11"
@@ -10844,9 +10844,9 @@ nyc@^15.0.0:
     yargs "^15.0.2"
 
 nypm@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/nypm/-/nypm-0.2.0.tgz#9161970ae0f21a8acfbdce6ae6c7dc042d0f4e79"
-  integrity sha512-auBv78LkHyU9TywBE91N+RTkanVyFLsVayZaHW+YYvJDJ3u2PCwLaYB3eecPQD9tgCIXGuH871HlHTdKSf6rtw==
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/nypm/-/nypm-0.2.1.tgz#a239a06c48b46c85316359ba921fd0295452d7a3"
+  integrity sha512-5XKv4OKlnL+qkeWU4ywu35iyT1p8TmFJ5vD9BfVn8tHU3g/X0lDLV8TqZ4dNHwkoo9mtHUpQ8W8ert0XPqwbow==
   dependencies:
     execa "^7.1.1"
 

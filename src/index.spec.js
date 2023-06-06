@@ -125,7 +125,7 @@ export default tester(
       })
       await execaCommand('git add .')
       await execaCommand('git commit -m init')
-      await fs.outputFile(P.join('content', 'home.md'), 'foo')
+      await fs.outputFile('content/home.md', 'foo')
       await execaCommand('git add .')
       await execaCommand('git commit -m update')
 
@@ -136,8 +136,7 @@ export default tester(
       const createdAt = new Date(log.all |> last |> property('date'))
 
       const updatedAt = new Date(log.latest.date)
-
-      const nuxt = execaCommand('nuxt dev', { stdio: 'inherit' })
+      const nuxt = execaCommand('nuxt dev')
       try {
         await nuxtDevReady()
         expect(

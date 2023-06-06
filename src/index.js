@@ -1,8 +1,8 @@
-import { addServerPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addServerPlugin, createResolver } from '@nuxt/kit'
 
 const resolver = createResolver(import.meta.url)
 
-export default defineNuxtModule((options, nuxt) => {
+export default () => (options, nuxt) => {
   nuxt.options.runtimeConfig.public.nuxtContentGit = {
     createdAtName: 'createdAt',
     updatedAtName: 'updatedAt',
@@ -11,4 +11,4 @@ export default defineNuxtModule((options, nuxt) => {
     ...options,
   }
   addServerPlugin(resolver.resolve('./server-plugin.js'))
-})
+}

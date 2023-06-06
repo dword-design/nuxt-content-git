@@ -5,7 +5,7 @@ import simpleGit from 'simple-git'
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'
 
 export default defineNitroPlugin(nitroApp => {
-  const options = useRuntimeConfig().nuxtContentGit
+  const options = useRuntimeConfig().public.nuxtContentGit
   nitroApp.hooks.hook('content:file:afterParse', async (file, database) => {
     if (file._id.endsWith('.md')) {
       const git = simpleGit()
