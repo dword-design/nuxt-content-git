@@ -67,18 +67,18 @@ $ yarn add nuxt-content-git
 
 ## Usage
 
-Add the module to your `nuxt.config.js` file **before** `@nuxt/content`:
+Add the module to your `nuxt.config.js`:
 
 ```js
 export default {
   modules: [
-    'nuxt-content-git',
     '@nuxt/content',
+    'nuxt-content-git',
   },
 }
 ```
 
-This will replace `doc.createdAt` and `doc.updatedAt` with the dates from the Git log.
+This will set `doc.createdAt` and `doc.updatedAt` with the dates from the Git log.
 
 It is also possible to not override the values but instead specify the field names like this:
 
