@@ -5,7 +5,7 @@ import simpleGit from 'simple-git'
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'
 
 export default defineNitroPlugin(nitroApp => {
-  const options = useRuntimeConfig().public.nuxtContentGit
+  const options = useRuntimeConfig().nuxtContentGit
   nitroApp.hooks.hook('content:file:afterParse', async file => {
     const git = simpleGit()
 
