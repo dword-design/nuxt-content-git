@@ -1,4 +1,10 @@
-import { endent, first, last, pick, property } from '@dword-design/functions'
+import {
+  endent,
+  first,
+  last,
+  pick,
+  property,
+} from '@dword-design/functions'
 import tester from '@dword-design/tester'
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir'
 import axios from 'axios'
@@ -84,12 +90,6 @@ export default tester(
           }
         `,
       })
-
-      const fileStats = await fs.stat(P.join('content', 'home.md'))
-
-      const createdAt = fileStats.birthtime
-
-      const updatedAt = fileStats.mtime
 
       const nuxt = execaCommand('nuxt dev')
       try {
