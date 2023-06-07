@@ -22,8 +22,8 @@ export default tester(
         'nuxt.config.js': endent`
           export default {
             modules: [
-              ['../src/index.js', { createdAtName: 'gitCreatedAt', updatedAtName: 'gitUpdatedAt' }],
               '${packageName`@nuxt/content`}',
+              ['self', { createdAtName: 'gitCreatedAt', updatedAtName: 'gitUpdatedAt' }],
             ],
           }
         `,
@@ -44,8 +44,6 @@ export default tester(
           </script>
         `,
       })
-      await fs.ensureDir('modules')
-      await fs.copy('../src', 'modules/self')
       await execaCommand('git add .')
       await execaCommand('git commit -m init')
 
@@ -60,13 +58,12 @@ export default tester(
       const nuxt = execaCommand('nuxt dev')
       try {
         await nuxtDevReady()
-        await this.page.goto('http://localhost:3000')
         expect(
           axios.get('http://localhost:3000/api/_content/query?_path=/home')
             |> await
             |> property('data')
             |> first
-            |> pick(['createdAt', 'updatedAt']),
+            |> pick(['gitCreatedAt', 'gitUpdatedAt']),
         ).toEqual({
           gitCreatedAt: createdAt.toISOString(),
           gitUpdatedAt: updatedAt.toISOString(),
@@ -82,12 +79,11 @@ export default tester(
           export default {
             modules: [
               '${packageName`@nuxt/content`}',
+              'self',
             ],
           }
         `,
       })
-      await fs.ensureDir('modules')
-      await fs.copy('../src', 'modules/self')
 
       const fileStats = await fs.stat(P.join('content', 'home.md'))
 
@@ -98,17 +94,13 @@ export default tester(
       const nuxt = execaCommand('nuxt dev')
       try {
         await nuxtDevReady()
-        await this.page.goto('http://localhost:3000')
         expect(
           axios.get('http://localhost:3000/api/_content/query?_path=/home')
             |> await
             |> property('data')
             |> first
             |> pick(['createdAt', 'updatedAt']),
-        ).toEqual({
-          createdAt: createdAt.toISOString(),
-          updatedAt: updatedAt.toISOString(),
-        })
+        ).toEqual({})
       } finally {
         await kill(nuxt.pid)
       }
@@ -123,12 +115,11 @@ export default tester(
           export default {
             modules: [
               '${packageName`@nuxt/content`}',
+              'self',
             ],
           }
         `,
       })
-      await fs.ensureDir('modules')
-      await fs.copy('../src', 'modules/self')
       await execaCommand('git add .')
       await execaCommand('git commit -m init')
       await fs.outputFile('content/home.md', 'foo')
@@ -161,5 +152,19 @@ export default tester(
       }
     },
   },
-  [testerPluginTmpDir()],
+  [
+    testerPluginTmpDir(),
+    {
+      before: () => execaCommand('base prepublishOnly'),
+    },
+    {
+      beforeEach: async () => {
+        await fs.outputFile(
+          'node_modules/self/package.json',
+          JSON.stringify({ exports: './src/index.js', name: 'self' }),
+        )
+        await fs.copy('../src', 'node_modules/self/src')
+      },
+    },
+  ],
 )
