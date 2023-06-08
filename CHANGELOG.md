@@ -1,3 +1,12 @@
+## [3.0.32](https://github.com/dword-design/nuxt-content-git/compare/v3.0.31...v3.0.32) (2023-06-08)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#121](https://github.com/dword-design/nuxt-content-git/issues/121)) ([3b7478c](https://github.com/dword-design/nuxt-content-git/commit/3b7478c893ca542728dbca1a12ce95714ec6708a))
+* make runtime config private ([9df6d15](https://github.com/dword-design/nuxt-content-git/commit/9df6d157570bd2b69ea8eb5fb0a7989b2dcb2bdf))
+* nuxt 2 ([1ee1989](https://github.com/dword-design/nuxt-content-git/commit/1ee198975e00bbb715c540068a614217268a8e39))
+
 ## [3.0.31](https://github.com/dword-design/nuxt-content-git/compare/v3.0.30...v3.0.31) (2023-04-28)
 
 
