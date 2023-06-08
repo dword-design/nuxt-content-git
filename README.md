@@ -85,16 +85,29 @@ It is also possible to not override the values but instead specify the field nam
 ```js
 export default {
   modules: [
+    '@nuxt/content',
     ['nuxt-content-git', {
       createdAtName: 'gitCreatedAt',
       updatedAtName: 'gitUpdatedAt',
     }],
-    '@nuxt/content',
   ],
 }
 ```
 
 Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
+
+## Nuxt 2
+
+For Nuxt 2 you need to add the module _before_ `@nuxt/content`:
+
+```js
+export default {
+  modules: [
+    'nuxt-content-git',
+    '@nuxt/content',
+  },
+}
+```
 
 ## Deployment
 

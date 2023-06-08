@@ -1,20 +1,15 @@
-import { last } from '@dword-design/functions'
 import P from 'path'
-import simpleGit from 'simple-git'
 
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'
 
-export default defineNitroPlugin(nitroApp => {
-  const options = useRuntimeConfig().nuxtContentGit
-  nitroApp.hooks.hook('content:file:afterParse', async file => {
-    const git = simpleGit()
+import setVariables from './set-variables.js'
 
-    const log = await git.log({
-      file: P.join('content', file._file),
-    })
-    file[options.createdAtName] =
-      log.all.length > 0 ? new Date(last(log.all).date) : undefined
-    file[options.updatedAtName] =
-      log.latest === null ? undefined : new Date(log.latest.date)
-  })
-})
+export default defineNitroPlugin(nitroApp =>
+  nitroApp.hooks.hook('content:file:afterParse', file =>
+    setVariables(
+      file,
+      P.join('content', file._file),
+      useRuntimeConfig().nuxtContentGit,
+    ),
+  ),
+)
