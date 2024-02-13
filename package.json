@@ -37,7 +37,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/functions": "^5.0.20",
+    "@dword-design/functions": "^6.0.0",
     "@nuxt/kit": "^3.5.3",
     "simple-git": "^3.15.1"
   },
