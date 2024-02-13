@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/dword-design/nuxt-content-git/compare/v3.0.32...v4.0.0) (2024-02-13)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v11 ([#127](https://github.com/dword-design/nuxt-content-git/issues/127)) ([16c4905](https://github.com/dword-design/nuxt-content-git/commit/16c4905f73846b376f655e0460ca703e51ad669f))
+
+
+### BREAKING CHANGES
+
+* node.js >= 18
+
 ## [3.0.32](https://github.com/dword-design/nuxt-content-git/compare/v3.0.31...v3.0.32) (2023-06-08)
 
 
