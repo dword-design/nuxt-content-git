@@ -208,7 +208,7 @@ export default tester(
           P.join('node_modules', '.cache', 'nuxt2', 'package.json'),
           JSON.stringify({}),
         )
-        await execaCommand('yarn add nuxt@^2 @nuxt/content 1', {
+        await execaCommand('yarn add nuxt@^2 @nuxt/content@^1', {
           cwd: P.join('node_modules', '.cache', 'nuxt2'),
         })
         spinner.stop()
