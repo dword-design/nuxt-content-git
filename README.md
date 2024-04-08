@@ -58,10 +58,10 @@ Additional module for @nuxt/content that replaces or adds createdAt and updatedA
 
 ```bash
 # npm
-$ npm install nuxt-content-git
+$ npx nuxi module add nuxt-content-git
 
 # Yarn
-$ yarn add nuxt-content-git
+$ yarn nuxi module add nuxt-content-git
 ```
 <!-- /INSTALL -->
 
@@ -168,5 +168,5 @@ Thanks a lot for your support! ❤️
 
 ## License
 
-[MIT License](https://opensource.org/licenses/MIT) © [Sebastian Landwehr](https://sebastianlandwehr.com)
+[MIT License](https://opensource.org/license/mit/) © [Sebastian Landwehr](https://sebastianlandwehr.com)
 <!-- /LICENSE -->
