@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/dword-design/nuxt-content-git/compare/v4.0.0...v4.0.1) (2024-04-08)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/functions to v6 ([#129](https://github.com/dword-design/nuxt-content-git/issues/129)) ([a8006fd](https://github.com/dword-design/nuxt-content-git/commit/a8006fd360aca0437fd4f4ce876174a12ed0f43c))
+
 # [4.0.0](https://github.com/dword-design/nuxt-content-git/compare/v3.0.32...v4.0.0) (2024-02-13)
 
 
