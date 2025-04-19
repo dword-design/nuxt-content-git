@@ -80,6 +80,27 @@ export default {
 
 This will set `doc.createdAt` and `doc.updatedAt` with the dates from the Git log.
 
+Now you need to define those fields in your collection schema, otherwise @nuxt/content won't add them to the database.
+
+```js
+// content.config.js
+
+import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+export default defineContentConfig({
+  collections: {
+    content: defineCollection({
+      source: '**',
+      type: 'page',
+      schema: z.object({
+        gitCreatedAt: z.string(),
+        gitUpdatedAt: z.string(),
+      }),
+    }),
+  },
+});
+```
+
 It is also possible to not override the values but instead specify the field names like this:
 
 ```js
