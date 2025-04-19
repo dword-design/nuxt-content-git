@@ -9,47 +9,47 @@ importers:
   .:
     dependencies:
       '@dword-design/functions':
-        specifier: ^6.0.0
+        specifier: ^6.0.2
         version: 6.0.2
       simple-git:
-        specifier: ^3.15.1
+        specifier: ^3.27.0
         version: 3.27.0
     devDependencies:
       '@dword-design/base':
-        specifier: ^11.0.0
+        specifier: ^11.2.10
         version: 11.2.10(@babel/core@7.26.10)(@types/node@22.14.1)(@typescript-eslint/parser@8.30.1(eslint@8.57.1)(typescript@5.8.3))(babel-plugin-module-resolver@5.0.2)(jest@27.5.1)(typescript@5.8.3)
       '@dword-design/base-config-nuxt-module':
         specifier: ^1.0.0
         version: 1.0.0(babel-plugin-macros@3.1.0)
       '@dword-design/tester':
-        specifier: ^2.0.0
+        specifier: ^2.0.19
         version: 2.0.19
       '@dword-design/tester-plugin-tmp-dir':
         specifier: ^2.1.26
         version: 2.1.26
       '@nuxt/content':
-        specifier: ^3.0.0
+        specifier: ^3.4.0
         version: 3.4.0(magicast@0.3.5)(typescript@5.8.3)
       axios:
-        specifier: ^1.4.0
+        specifier: ^1.8.4
         version: 1.8.4
       depcheck-package-name:
-        specifier: ^3.0.0
+        specifier: ^3.0.1
         version: 3.0.1
       execa:
         specifier: ^9.5.2
         version: 9.5.2
       fs-extra:
-        specifier: ^11.1.1
+        specifier: ^11.3.0
         version: 11.3.0
       nuxt:
-        specifier: ^3.5.3
+        specifier: ^3.16.2
         version: 3.16.2(@netlify/blobs@8.2.0)(@parcel/watcher@2.5.1)(@types/node@22.14.1)(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(eslint@8.57.1)(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.40.0)(sass@1.62.1)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.2(@types/node@22.14.1)(jiti@2.4.2)(sass@1.62.1)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1)
       nuxt-dev-ready:
         specifier: ^3.0.0
         version: 3.0.0
       output-files:
-        specifier: ^2.0.0
+        specifier: ^2.0.32
         version: 2.0.32
       tree-kill-promise:
         specifier: ^3.0.14

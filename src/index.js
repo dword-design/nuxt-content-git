@@ -13,13 +13,21 @@ export default (options, nuxt) => {
   nuxt.options.runtimeConfig.nuxtContentGit = options;
 
   nuxt.hook('content:file:afterParse', async ({ file, content }) => {
+    if (content[options.createdAtName] && content[options.updatedAtName]) {
+      return;
+    }
+
     const git = simpleGit();
     const log = await git.log({ file: file.path });
 
-    content[options.createdAtName] =
-      log.all.length > 0 ? new Date(last(log.all).date).toISOString() : null;
+    if (!content[options.createdAtName]) {
+      content[options.createdAtName] =
+        log.all.length > 0 ? new Date(last(log.all).date) : null;
+    }
 
-    content[options.updatedAtName] =
-      log.latest === null ? null : new Date(log.latest.date).toISOString();
+    if (!content[options.updatedAtName]) {
+      content[options.updatedAtName] =
+        log.latest === null ? null : new Date(log.latest.date);
+    }
   });
 };

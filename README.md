@@ -93,15 +93,26 @@ export default defineContentConfig({
       source: '**',
       type: 'page',
       schema: z.object({
-        gitCreatedAt: z.string(),
-        gitUpdatedAt: z.string(),
+        gitCreatedAt: z.date(),
+        gitUpdatedAt: z.date(),
       }),
     }),
   },
 });
 ```
 
-It is also possible to not override the values but instead specify the field names like this:
+You can override the values via frontmatter like so:
+
+```md
+// content/home.md
+
+---
+createdAt: 2020-04-04
+updatedAt: 2020-06-06
+---
+```
+
+It is also possible to adjust the field names like this:
 
 ```js
 export default {
@@ -116,19 +127,6 @@ export default {
 ```
 
 Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
-
-## Nuxt 2
-
-For Nuxt 2 you need to add the module _before_ `@nuxt/content`:
-
-```js
-export default {
-  modules: [
-    'nuxt-content-git',
-    '@nuxt/content',
-  },
-}
-```
 
 ## Deployment
 

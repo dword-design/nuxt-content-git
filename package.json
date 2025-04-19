@@ -37,22 +37,22 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/functions": "^6.0.0",
-    "simple-git": "^3.15.1"
+    "@dword-design/functions": "^6.0.2",
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^11.0.0",
+    "@dword-design/base": "^11.2.10",
     "@dword-design/base-config-nuxt-module": "^1.0.0",
-    "@dword-design/tester": "^2.0.0",
+    "@dword-design/tester": "^2.0.19",
     "@dword-design/tester-plugin-tmp-dir": "^2.1.26",
-    "@nuxt/content": "^3.0.0",
-    "axios": "^1.4.0",
-    "depcheck-package-name": "^3.0.0",
+    "@nuxt/content": "^3.4.0",
+    "axios": "^1.8.4",
+    "depcheck-package-name": "^3.0.1",
     "execa": "^9.5.2",
-    "fs-extra": "^11.1.1",
-    "nuxt": "^3.5.3",
+    "fs-extra": "^11.3.0",
+    "nuxt": "^3.16.2",
     "nuxt-dev-ready": "^3.0.0",
-    "output-files": "^2.0.0",
+    "output-files": "^2.0.32",
     "tree-kill-promise": "^3.0.14"
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",

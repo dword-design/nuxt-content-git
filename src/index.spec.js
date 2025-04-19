@@ -28,8 +28,8 @@ export default tester(
                 source: '**',
                 type: 'page',
                 schema: z.object({
-                  gitCreatedAt: z.string(),
-                  gitUpdatedAt: z.string(),
+                  gitCreatedAt: z.date(),
+                  gitUpdatedAt: z.date(),
                 }),
               }),
             },
@@ -103,8 +103,8 @@ export default tester(
                 source: '**',
                 type: 'page',
                 schema: z.object({
-                  createdAt: z.string(),
-                  updatedAt: z.string(),
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
                 }),
               }),
             },
@@ -140,6 +140,78 @@ export default tester(
         await kill(nuxt.pid);
       }
     },
+    'override dates': async () => {
+      await execaCommand('git init');
+      await execaCommand('git config user.email "foo@bar.de"');
+      await execaCommand('git config user.name "foo"');
+
+      await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+                schema: z.object({
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
+                }),
+              }),
+            },
+          });
+        `,
+        'content/home.md': '',
+        'nuxt.config.js': endent`
+          export default {
+            modules: [
+              '${packageName`@nuxt/content`}',
+              'self',
+            ],
+          }
+        `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').select('createdAt', 'updatedAt').all());
+        `,
+      });
+
+      await execaCommand('git add .');
+      await execaCommand('git commit -m init');
+
+      await fs.outputFile(
+        'content/home.md',
+        endent`
+          ---
+          createdAt: 2020-04-04
+          updatedAt: 2020-06-06
+          ---
+        `,
+      );
+
+      await execaCommand('git add .');
+      await execaCommand('git commit -m update');
+      const nuxt = execaCommand('nuxt dev', { env: { NODE_ENV: '' } });
+
+      try {
+        await nuxtDevReady();
+
+        expect(
+          axios.get('http://localhost:3000/api/content')
+            |> await
+            |> property('data'),
+        ).toEqual([
+          {
+            createdAt: new Date('2020-04-04').toISOString(),
+            updatedAt: new Date('2020-06-06').toISOString(),
+          },
+        ]);
+      } finally {
+        await kill(nuxt.pid);
+      }
+    },
     works: async () => {
       await execaCommand('git init');
       await execaCommand('git config user.email "foo@bar.de"');
@@ -155,8 +227,8 @@ export default tester(
                 source: '**',
                 type: 'page',
                 schema: z.object({
-                  createdAt: z.string(),
-                  updatedAt: z.string(),
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
                 }),
               }),
             },
