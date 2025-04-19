@@ -1,8 +1,8 @@
-import P from 'path'
+import P from 'path';
 
-import { defineNitroPlugin, useRuntimeConfig } from '#imports'
+import { defineNitroPlugin, useRuntimeConfig } from '#imports';
 
-import setVariables from './set-variables.js'
+import setVariables from './set-variables.js';
 
 export default defineNitroPlugin(nitroApp =>
   nitroApp.hooks.hook('content:file:afterParse', file =>
@@ -12,4 +12,4 @@ export default defineNitroPlugin(nitroApp =>
       useRuntimeConfig().nuxtContentGit,
     ),
   ),
-)
+);
