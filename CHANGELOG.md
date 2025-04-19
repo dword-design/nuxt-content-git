@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/dword-design/nuxt-content-git/compare/v4.0.1...v5.0.0) (2025-04-19)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#133](https://github.com/dword-design/nuxt-content-git/issues/133)) ([a84c453](https://github.com/dword-design/nuxt-content-git/commit/a84c453ce46b9fc7b20bd2e10d469d963cfac6ee))
+
+
+### BREAKING CHANGES
+
+* drop nuxt 2 support
+
 ## [4.0.1](https://github.com/dword-design/nuxt-content-git/compare/v4.0.0...v4.0.1) (2024-04-08)
 
 
