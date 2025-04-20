@@ -93,15 +93,15 @@ export default defineContentConfig({
       source: '**',
       type: 'page',
       schema: z.object({
-        gitCreatedAt: z.date(),
-        gitUpdatedAt: z.date(),
+        createdAt: z.date(),
+        updatedAt: z.date(),
       }),
     }),
   },
 });
 ```
 
-You can override the values via frontmatter like so:
+You can override the values via front matter like so:
 
 ```md
 // content/home.md
@@ -126,7 +126,7 @@ export default {
 }
 ```
 
-Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
+Update the schema accordingly. Then you can access them via `doc.gitCreatedAt` and `doc.gitUpdatedAt`.
 
 ## Deployment
 

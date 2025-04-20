@@ -44,22 +44,6 @@ export default tester(
             ],
           }
         `,
-        'pages/index.vue': endent`
-          <template>
-            <div>
-              <div class="created-at">{{ page.gitCreatedAt }}</div>
-              <div class="updated-at">{{ page.gitUpdatedAt }}</div>
-            </div>
-          </template>
-
-          <script>
-          export default {
-            asyncData: async context => ({
-              page: await context.$content('home').fetch()
-            }),
-          }
-          </script>
-        `,
         'server/api/content.get.js': endent`
           import { defineEventHandler, queryCollection } from '#imports';
 
@@ -208,6 +192,45 @@ export default tester(
             updatedAt: new Date('2020-06-06').toISOString(),
           },
         ]);
+      } finally {
+        await kill(nuxt.pid);
+      }
+    },
+    'schema not defined': async () => {
+      await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+              }),
+            },
+          });
+        `,
+        'content/home.md': '',
+        'nuxt.config.js': endent`
+          export default {
+            modules: [
+              '${packageName`@nuxt/content`}',
+              'self',
+            ],
+          }
+        `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').all());
+        `,
+      });
+
+      const nuxt = execaCommand('nuxt dev');
+
+      try {
+        await nuxtDevReady();
+        await axios.get('http://localhost:3000/api/content');
       } finally {
         await kill(nuxt.pid);
       }
