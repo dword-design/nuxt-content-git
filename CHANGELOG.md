@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/dword-design/nuxt-content-git/compare/v5.0.0...v6.0.0) (2025-04-20)
+
+
+### Bug Fixes
+
+* update dependency @nuxt/content to v3 ([#132](https://github.com/dword-design/nuxt-content-git/issues/132)) ([01c50c3](https://github.com/dword-design/nuxt-content-git/commit/01c50c33b7e4a989f24067a6dc55cd513de2df81))
+
+
+### BREAKING CHANGES
+
+* upgrade to @nuxt/content v3
+
 # [5.0.0](https://github.com/dword-design/nuxt-content-git/compare/v4.0.1...v5.0.0) (2025-04-19)
 
 
