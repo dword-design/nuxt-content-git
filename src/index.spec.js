@@ -1,4 +1,4 @@
-import { endent, first, last, pick, property } from '@dword-design/functions';
+import { endent, last, property } from '@dword-design/functions';
 import tester from '@dword-design/tester';
 import testerPluginTmpDir from '@dword-design/tester-plugin-tmp-dir';
 import axios from 'axios';
@@ -19,6 +19,22 @@ export default tester(
       await execaCommand('git config user.name "foo"');
 
       await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+                schema: z.object({
+                  gitCreatedAt: z.date(),
+                  gitUpdatedAt: z.date(),
+                }),
+              }),
+            },
+          });
+        `,
         'content/home.md': '',
         'nuxt.config.js': endent`
           export default {
@@ -28,21 +44,10 @@ export default tester(
             ],
           }
         `,
-        'pages/index.vue': endent`
-          <template>
-            <div>
-              <div class="created-at">{{ page.gitCreatedAt }}</div>
-              <div class="updated-at">{{ page.gitUpdatedAt }}</div>
-            </div>
-          </template>
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
 
-          <script>
-          export default {
-            asyncData: async context => ({
-              page: await context.$content('home').fetch()
-            }),
-          }
-          </script>
+          export default defineEventHandler(event => queryCollection(event, 'content').select('gitCreatedAt', 'gitUpdatedAt').all());
         `,
       });
 
@@ -58,21 +63,37 @@ export default tester(
         await nuxtDevReady();
 
         expect(
-          axios.get('http://localhost:3000/api/_content/query?_path=/home')
+          axios.get('http://localhost:3000/api/content')
             |> await
-            |> property('data')
-            |> first
-            |> pick(['gitCreatedAt', 'gitUpdatedAt']),
-        ).toEqual({
-          gitCreatedAt: createdAt.toISOString(),
-          gitUpdatedAt: updatedAt.toISOString(),
-        });
+            |> property('data'),
+        ).toEqual([
+          {
+            gitCreatedAt: createdAt.toISOString(),
+            gitUpdatedAt: updatedAt.toISOString(),
+          },
+        ]);
       } finally {
         await kill(nuxt.pid);
       }
     },
     'no git': async () => {
       await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+                schema: z.object({
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
+                }),
+              }),
+            },
+          });
+        `,
         'content/home.md': '',
         'nuxt.config.js': endent`
           export default {
@@ -82,6 +103,11 @@ export default tester(
             ],
           }
         `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').select('createdAt', 'updatedAt').all());
+        `,
       });
 
       const nuxt = execaCommand('nuxt dev');
@@ -90,12 +116,121 @@ export default tester(
         await nuxtDevReady();
 
         expect(
-          axios.get('http://localhost:3000/api/_content/query?_path=/home')
+          axios.get('http://localhost:3000/api/content')
             |> await
-            |> property('data')
-            |> first
-            |> pick(['createdAt', 'updatedAt']),
-        ).toEqual({});
+            |> property('data'),
+        ).toEqual([{ createdAt: null, updatedAt: null }]);
+      } finally {
+        await kill(nuxt.pid);
+      }
+    },
+    'override dates': async () => {
+      await execaCommand('git init');
+      await execaCommand('git config user.email "foo@bar.de"');
+      await execaCommand('git config user.name "foo"');
+
+      await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+                schema: z.object({
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
+                }),
+              }),
+            },
+          });
+        `,
+        'content/home.md': '',
+        'nuxt.config.js': endent`
+          export default {
+            modules: [
+              '${packageName`@nuxt/content`}',
+              'self',
+            ],
+          }
+        `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').select('createdAt', 'updatedAt').all());
+        `,
+      });
+
+      await execaCommand('git add .');
+      await execaCommand('git commit -m init');
+
+      await fs.outputFile(
+        'content/home.md',
+        endent`
+          ---
+          createdAt: 2020-04-04
+          updatedAt: 2020-06-06
+          ---
+        `,
+      );
+
+      await execaCommand('git add .');
+      await execaCommand('git commit -m update');
+      const nuxt = execaCommand('nuxt dev', { env: { NODE_ENV: '' } });
+
+      try {
+        await nuxtDevReady();
+
+        expect(
+          axios.get('http://localhost:3000/api/content')
+            |> await
+            |> property('data'),
+        ).toEqual([
+          {
+            createdAt: new Date('2020-04-04').toISOString(),
+            updatedAt: new Date('2020-06-06').toISOString(),
+          },
+        ]);
+      } finally {
+        await kill(nuxt.pid);
+      }
+    },
+    'schema not defined': async () => {
+      await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+              }),
+            },
+          });
+        `,
+        'content/home.md': '',
+        'nuxt.config.js': endent`
+          export default {
+            modules: [
+              '${packageName`@nuxt/content`}',
+              'self',
+            ],
+          }
+        `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').all());
+        `,
+      });
+
+      const nuxt = execaCommand('nuxt dev');
+
+      try {
+        await nuxtDevReady();
+        await axios.get('http://localhost:3000/api/content');
       } finally {
         await kill(nuxt.pid);
       }
@@ -106,6 +241,22 @@ export default tester(
       await execaCommand('git config user.name "foo"');
 
       await outputFiles({
+        'content.config.js': endent`
+          import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+
+          export default defineContentConfig({
+            collections: {
+              content: defineCollection({
+                source: '**',
+                type: 'page',
+                schema: z.object({
+                  createdAt: z.date(),
+                  updatedAt: z.date(),
+                }),
+              }),
+            },
+          });
+        `,
         'content/home.md': '',
         'nuxt.config.js': endent`
           export default {
@@ -114,6 +265,11 @@ export default tester(
               'self',
             ],
           }
+        `,
+        'server/api/content.get.js': endent`
+          import { defineEventHandler, queryCollection } from '#imports';
+
+          export default defineEventHandler(event => queryCollection(event, 'content').select('createdAt', 'updatedAt').all());
         `,
       });
 
@@ -126,21 +282,21 @@ export default tester(
       const log = await git.log({ file: P.join('content', 'home.md') });
       const createdAt = new Date(log.all |> last |> property('date'));
       const updatedAt = new Date(log.latest.date);
-      const nuxt = execaCommand('nuxt dev');
+      const nuxt = execaCommand('nuxt dev', { env: { NODE_ENV: '' } });
 
       try {
         await nuxtDevReady();
 
         expect(
-          axios.get('http://localhost:3000/api/_content/query?_path=/home')
+          axios.get('http://localhost:3000/api/content')
             |> await
-            |> property('data')
-            |> first
-            |> pick(['createdAt', 'updatedAt']),
-        ).toEqual({
-          createdAt: createdAt.toISOString(),
-          updatedAt: updatedAt.toISOString(),
-        });
+            |> property('data'),
+        ).toEqual([
+          {
+            createdAt: createdAt.toISOString(),
+            updatedAt: updatedAt.toISOString(),
+          },
+        ]);
       } finally {
         await kill(nuxt.pid);
       }
