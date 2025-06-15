@@ -51,7 +51,7 @@
     "execa": "^9.5.2",
     "fs-extra": "^11.3.0",
     "nuxt": "^3.16.2",
-    "nuxt-dev-ready": "^3.0.0",
+    "nuxt-dev-ready": "^4.0.0",
     "output-files": "^2.0.32",
     "tree-kill-promise": "^3.0.14"
   },
