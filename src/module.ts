@@ -1,4 +1,4 @@
-import { last } from '@dword-design/functions';
+import { last } from 'lodash-es';
 import simpleGit from 'simple-git';
 
 export default (options, nuxt) => {

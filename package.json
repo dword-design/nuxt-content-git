@@ -21,8 +21,15 @@
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "type": "module",
-  "exports": "./dist/index.js",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/module.js",
+        "types": "./dist/module.d.ts"
+      }
+    }
+  },
+  "main": "dist/module.js",
   "files": [
     "dist"
   ],
@@ -37,21 +44,23 @@
     "test": "base test"
   },
   "dependencies": {
-    "@dword-design/functions": "^6.0.2",
+    "lodash-es": "^4.17.21",
     "simple-git": "^3.27.0"
   },
   "devDependencies": {
     "@dword-design/base": "^13.0.0",
-    "@dword-design/base-config-nuxt-module": "^1.0.0",
-    "@dword-design/tester": "^2.0.19",
-    "@dword-design/tester-plugin-tmp-dir": "^2.1.26",
+    "@dword-design/base-config-nuxt-module": "^2.0.0",
     "@nuxt/content": "^3.4.0",
+    "@playwright/test": "^1.53.1",
     "axios": "^1.8.4",
+    "better-sqlite3": "^12.0.0",
     "depcheck-package-name": "^3.0.1",
+    "endent": "npm:@dword-design/endent@^1.4.1",
     "execa": "^9.5.2",
     "fs-extra": "^11.3.0",
+    "get-port": "^7.1.0",
     "nuxt": "^3.16.2",
-    "nuxt-dev-ready": "^3.0.0",
+    "nuxt-dev-ready": "^4.0.0",
     "output-files": "^2.0.32",
     "tree-kill-promise": "^3.0.14"
   },

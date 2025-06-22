@@ -1,7 +1,9 @@
 .DS_Store
 /.env.json
+/.nuxt
 /.nyc_output
 /.test.env.json
 /coverage
 /dist
 /node_modules
+/test-results
