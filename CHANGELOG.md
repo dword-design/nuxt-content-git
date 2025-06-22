@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/dword-design/nuxt-content-git/compare/v6.0.0...v6.0.1) (2025-06-22)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v13 ([#136](https://github.com/dword-design/nuxt-content-git/issues/136)) ([69b6853](https://github.com/dword-design/nuxt-content-git/commit/69b68536be7fe382d6ea1a9550287734fa15c010))
+
 # [6.0.0](https://github.com/dword-design/nuxt-content-git/compare/v5.0.0...v6.0.0) (2025-04-20)
 
 
