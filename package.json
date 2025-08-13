@@ -59,7 +59,7 @@
     "execa": "^9.5.2",
     "fs-extra": "^11.3.0",
     "get-port": "^7.1.0",
-    "nuxt": "^3.16.2",
+    "nuxt": "^4.0.0",
     "nuxt-dev-ready": "^4.0.0",
     "output-files": "^2.0.32",
     "tree-kill-promise": "^3.0.14"
