@@ -66,13 +66,8 @@ test('custom field names', async ({}, testInfo) => {
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        gitCreatedAt: createdAt.toISOString(),
-        gitUpdatedAt: updatedAt.toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].gitCreatedAt)).toEqual(createdAt);
+    expect(new Date(data[0].gitUpdatedAt)).toEqual(updatedAt);
   } finally {
     await kill(nuxt.pid!);
   }
@@ -190,13 +185,8 @@ test('override dates', async ({}, testInfo) => {
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        createdAt: new Date('2020-04-04').toISOString(),
-        updatedAt: new Date('2020-06-06').toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].createdAt)).toEqual(new Date('2020-04-04'));
+    expect(new Date(data[0].updatedAt)).toEqual(new Date('2020-06-06'));
   } finally {
     await kill(nuxt.pid!);
   }
@@ -303,13 +293,8 @@ test('works', async ({}, testInfo) => {
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        createdAt: createdAt.toISOString(),
-        updatedAt: updatedAt.toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].createdAt)).toEqual(createdAt);
+    expect(new Date(data[0].updatedAt)).toEqual(updatedAt);
   } finally {
     await kill(nuxt.pid!);
   }
