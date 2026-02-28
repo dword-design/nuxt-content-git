@@ -28,8 +28,8 @@ test('custom field names', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              gitCreatedAt: z.date(),
-              gitUpdatedAt: z.date(),
+              gitCreatedAt: z.string().datetime(),
+              gitUpdatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -91,8 +91,8 @@ test('no git', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -144,8 +144,8 @@ test('override dates', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -263,8 +263,8 @@ test('works', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
