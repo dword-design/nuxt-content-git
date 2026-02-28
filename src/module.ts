@@ -1,5 +1,21 @@
+import type { FileAfterParseHook } from '@nuxt/content';
 import { defineNuxtModule } from '@nuxt/kit';
 import simpleGit from 'simple-git';
+
+declare module '@nuxt/schema' {
+  interface NuxtHooks {
+    'content:file:afterParse': (
+      ctx: FileAfterParseHook,
+    ) => Promise<void> | void;
+  }
+}
+declare module 'nuxt/schema' {
+  interface NuxtHooks {
+    'content:file:afterParse': (
+      ctx: FileAfterParseHook,
+    ) => Promise<void> | void;
+  }
+}
 
 export default defineNuxtModule<{
   createdAtName: string;
@@ -12,23 +28,29 @@ export default defineNuxtModule<{
     name: 'nuxt-content-git',
   },
   setup: (options, nuxt) => {
-    nuxt.hook('content:file:afterParse', async ({ file, content }) => {
-      if (content[options.createdAtName] && content[options.updatedAtName]) {
-        return;
-      }
+    nuxt.hook(
+      'content:file:afterParse',
+      async ({ file, content }: FileAfterParseHook) => {
+        if (content[options.createdAtName] && content[options.updatedAtName]) {
+          return;
+        }
 
-      const git = simpleGit();
-      const log = await git.log({ file: file.path });
+        const git = simpleGit();
+        const log = await git.log({ file: file.path });
 
-      if (!content[options.createdAtName]) {
-        const oldest = log.all.at(-1);
-        content[options.createdAtName] = oldest ? new Date(oldest.date) : null;
-      }
+        if (!content[options.createdAtName]) {
+          const oldest = log.all.at(-1);
 
-      if (!content[options.updatedAtName]) {
-        content[options.updatedAtName] =
-          log.latest === null ? null : new Date(log.latest.date);
-      }
-    });
+          content[options.createdAtName] = oldest
+            ? new Date(oldest.date)
+            : null;
+        }
+
+        if (!content[options.updatedAtName]) {
+          content[options.updatedAtName] =
+            log.latest === null ? null : new Date(log.latest.date);
+        }
+      },
+    );
   },
 });
