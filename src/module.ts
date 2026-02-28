@@ -1,33 +1,34 @@
-import { last } from 'lodash-es';
+import { defineNuxtModule } from '@nuxt/kit';
 import simpleGit from 'simple-git';
 
-export default (options, nuxt) => {
-  options = {
-    createdAtName: 'createdAt',
-    updatedAtName: 'updatedAt',
-    ...nuxt.options.runtimeConfig.nuxtContentGit,
-    ...nuxt.options.nuxtContentGit,
-    ...options,
-  };
+export default defineNuxtModule<{
+  createdAtName: string;
+  updatedAtName: string;
+}>({
+  defaults: { createdAtName: 'createdAt', updatedAtName: 'updatedAt' },
+  meta: {
+    compatibility: { nuxt: '>=3.0.0' },
+    configKey: 'contentGit',
+    name: 'nuxt-content-git',
+  },
+  setup: (options, nuxt) => {
+    nuxt.hook('content:file:afterParse', async ({ file, content }) => {
+      if (content[options.createdAtName] && content[options.updatedAtName]) {
+        return;
+      }
 
-  nuxt.options.runtimeConfig.nuxtContentGit = options;
+      const git = simpleGit();
+      const log = await git.log({ file: file.path });
 
-  nuxt.hook('content:file:afterParse', async ({ file, content }) => {
-    if (content[options.createdAtName] && content[options.updatedAtName]) {
-      return;
-    }
+      if (!content[options.createdAtName]) {
+        const oldest = log.all.at(-1);
+        content[options.createdAtName] = oldest ? new Date(oldest.date) : null;
+      }
 
-    const git = simpleGit();
-    const log = await git.log({ file: file.path });
-
-    if (!content[options.createdAtName]) {
-      content[options.createdAtName] =
-        log.all.length > 0 ? new Date(last(log.all).date) : null;
-    }
-
-    if (!content[options.updatedAtName]) {
-      content[options.updatedAtName] =
-        log.latest === null ? null : new Date(log.latest.date);
-    }
-  });
-};
+      if (!content[options.updatedAtName]) {
+        content[options.updatedAtName] =
+          log.latest === null ? null : new Date(log.latest.date);
+      }
+    });
+  },
+});
