@@ -1,3 +1,17 @@
+# [7.0.0](https://github.com/dword-design/nuxt-content-git/compare/v6.0.1...v7.0.0) (2026-02-28)
+
+
+### Bug Fixes
+
+* trigger release ([f966005](https://github.com/dword-design/nuxt-content-git/commit/f966005e0bb164de146367512f83a7d3df73b6c0))
+* upgrades ([#153](https://github.com/dword-design/nuxt-content-git/issues/153)) ([2cd00be](https://github.com/dword-design/nuxt-content-git/commit/2cd00be29978085c84ca865aec6a2a2479a396d9))
+
+
+### BREAKING CHANGES
+
+* node.js >= 22
+* nuxt config top-level key nuxtContentGit -> contentGit
+
 ## [6.0.1](https://github.com/dword-design/nuxt-content-git/compare/v6.0.0...v6.0.1) (2025-06-22)
 
 
