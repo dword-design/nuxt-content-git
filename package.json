@@ -23,10 +23,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/module.js",
-        "types": "./dist/module.d.ts"
-      }
+      "default": "./dist/module.js",
+      "types": "./dist/module.d.ts"
     }
   },
   "main": "dist/module.js",
@@ -41,32 +39,35 @@
     "lint": "base lint",
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
-    "test": "base test"
+    "test": "base test",
+    "typecheck": "base typecheck",
+    "verify": "base verify"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21",
-    "simple-git": "^3.27.0"
+    "@nuxt/kit": "^4.3.1",
+    "simple-git": "^3.32.3"
   },
   "devDependencies": {
-    "@dword-design/base": "^13.0.0",
-    "@dword-design/base-config-nuxt-module": "^2.0.0",
-    "@nuxt/content": "^3.4.0",
-    "@playwright/test": "^1.53.1",
-    "axios": "^1.8.4",
-    "better-sqlite3": "^12.0.0",
-    "depcheck-package-name": "^3.0.1",
-    "endent": "npm:@dword-design/endent@^1.4.1",
-    "execa": "^9.5.2",
-    "fs-extra": "^11.3.0",
+    "@dword-design/base": "^16.2.3",
+    "@dword-design/base-config-nuxt-module": "^5.0.1",
+    "@nuxt/content": "^3.12.0",
+    "@playwright/test": "^1.58.2",
+    "@types/fs-extra": "^11.0.4",
+    "axios": "^1.13.6",
+    "better-sqlite3": "^12.6.2",
+    "depcheck-package-name": "^5.0.0",
+    "endent": "npm:@dword-design/endent@^1.4.7",
+    "execa": "^9.6.1",
+    "fs-extra": "^11.3.3",
     "get-port": "^7.1.0",
-    "nuxt": "^3.16.2",
-    "nuxt-dev-ready": "^4.0.0",
-    "output-files": "^2.0.32",
-    "tree-kill-promise": "^3.0.14"
+    "nuxt": "^4.3.1",
+    "nuxt-dev-ready": "^6.0.0",
+    "output-files": "^4.0.0",
+    "tree-kill-promise": "^5.0.0"
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"

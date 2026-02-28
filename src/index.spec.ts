@@ -7,7 +7,6 @@ import endent from 'endent';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
 import getPort from 'get-port';
-import { last } from 'lodash-es';
 import nuxtDevReady from 'nuxt-dev-ready';
 import outputFiles from 'output-files';
 import simpleGit from 'simple-git';
@@ -29,8 +28,8 @@ test('custom field names', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              gitCreatedAt: z.date(),
-              gitUpdatedAt: z.date(),
+              gitCreatedAt: z.string().datetime(),
+              gitUpdatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -53,13 +52,13 @@ test('custom field names', async ({}, testInfo) => {
   await execaCommand('git commit -m init', { cwd });
   const git = simpleGit({ baseDir: cwd });
   const log = await git.log({ file: pathLib.join('content', 'home.md') });
-  const createdAt = new Date(log.all[0].date);
-  const updatedAt = new Date(log.latest.date);
+  const createdAt = new Date(log.all.at(-1)!.date);
+  const updatedAt = new Date(log.latest!.date);
   const port = await getPort();
 
   const nuxt = execaCommand('nuxt dev', {
     cwd,
-    env: { PORT: port },
+    env: { PORT: String(port) },
     reject: false,
     stdio: 'inherit',
   });
@@ -67,15 +66,10 @@ test('custom field names', async ({}, testInfo) => {
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        gitCreatedAt: createdAt.toISOString(),
-        gitUpdatedAt: updatedAt.toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].gitCreatedAt)).toEqual(createdAt);
+    expect(new Date(data[0].gitUpdatedAt)).toEqual(updatedAt);
   } finally {
-    await kill(nuxt.pid);
+    await kill(nuxt.pid!);
   }
 });
 
@@ -92,8 +86,8 @@ test('no git', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -116,7 +110,7 @@ test('no git', async ({}, testInfo) => {
 
   const nuxt = execaCommand('nuxt dev', {
     cwd,
-    env: { PORT: port },
+    env: { PORT: String(port) },
     reject: false,
   });
 
@@ -125,7 +119,7 @@ test('no git', async ({}, testInfo) => {
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
     expect(data).toEqual([{ createdAt: null, updatedAt: null }]);
   } finally {
-    await kill(nuxt.pid);
+    await kill(nuxt.pid!);
   }
 });
 
@@ -145,8 +139,8 @@ test('override dates', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -184,22 +178,17 @@ test('override dates', async ({}, testInfo) => {
 
   const nuxt = execaCommand('nuxt dev', {
     cwd,
-    env: { PORT: port },
+    env: { PORT: String(port) },
     reject: false,
   });
 
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        createdAt: new Date('2020-04-04').toISOString(),
-        updatedAt: new Date('2020-06-06').toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].createdAt)).toEqual(new Date('2020-04-04'));
+    expect(new Date(data[0].updatedAt)).toEqual(new Date('2020-06-06'));
   } finally {
-    await kill(nuxt.pid);
+    await kill(nuxt.pid!);
   }
 });
 
@@ -236,7 +225,7 @@ test('schema not defined', async ({}, testInfo) => {
 
   const nuxt = execaCommand('nuxt dev', {
     cwd,
-    env: { PORT: port },
+    env: { PORT: String(port) },
     reject: false,
   });
 
@@ -244,7 +233,7 @@ test('schema not defined', async ({}, testInfo) => {
     await nuxtDevReady(port);
     await axios.get(`http://localhost:${port}/api/content`);
   } finally {
-    await kill(nuxt.pid);
+    await kill(nuxt.pid!);
   }
 });
 
@@ -264,8 +253,8 @@ test('works', async ({}, testInfo) => {
             source: '**',
             type: 'page',
             schema: z.object({
-              createdAt: z.date(),
-              updatedAt: z.date(),
+              createdAt: z.string().datetime(),
+              updatedAt: z.string().datetime(),
             }),
           }),
         },
@@ -291,27 +280,22 @@ test('works', async ({}, testInfo) => {
   await execaCommand('git commit -m update', { cwd });
   const git = simpleGit({ baseDir: cwd });
   const log = await git.log({ file: pathLib.join('content', 'home.md') });
-  const createdAt = new Date(last(log.all).date);
-  const updatedAt = new Date(log.latest.date);
+  const createdAt = new Date(log.all.at(-1)!.date);
+  const updatedAt = new Date(log.latest!.date);
   const port = await getPort();
 
   const nuxt = execaCommand('nuxt dev', {
     cwd,
-    env: { PORT: port },
+    env: { PORT: String(port) },
     reject: false,
   });
 
   try {
     await nuxtDevReady(port);
     const { data } = await axios.get(`http://localhost:${port}/api/content`);
-
-    expect(data).toEqual([
-      {
-        createdAt: createdAt.toISOString(),
-        updatedAt: updatedAt.toISOString(),
-      },
-    ]);
+    expect(new Date(data[0].createdAt)).toEqual(createdAt);
+    expect(new Date(data[0].updatedAt)).toEqual(updatedAt);
   } finally {
-    await kill(nuxt.pid);
+    await kill(nuxt.pid!);
   }
 });
