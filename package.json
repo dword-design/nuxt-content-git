@@ -54,7 +54,7 @@
     "@playwright/test": "^1.58.2",
     "@types/fs-extra": "^11.0.4",
     "axios": "^1.13.6",
-    "better-sqlite3": "^12.6.2",
+    "better-sqlite3": "^13.0.0",
     "depcheck-package-name": "^5.0.0",
     "endent": "npm:@dword-design/endent@^1.4.7",
     "execa": "^9.6.1",
